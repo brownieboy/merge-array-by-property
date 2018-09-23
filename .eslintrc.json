@@ -1,16 +1,17 @@
 {
-    "ecmaFeatures": {
-        "modules": true,
-        "spread": true
-    },
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "mocha": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 2018
+        "ecmaVersion": 2018,
+        "ecmaFeatures": {
+            "modules": true,
+            "spread": true
+        }
     },
     "rules": {
         "indent": ["error", 4],
