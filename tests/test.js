@@ -14,6 +14,14 @@ const planets = [
     { id: "020", name: "Corellia", allegiance: "Neutral" }
 ];
 
+const mergedChars = mergeArrayByPropertyValue(
+    ["planetId", "id"],
+    characters,
+    planets,
+    { newProperty: "planetData" }
+);
+console.log(mergedChars);
+
 /*
 var validatorObj = require("../dist/abnacn-validator.js");
 
