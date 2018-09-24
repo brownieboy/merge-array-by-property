@@ -1,4 +1,11 @@
 const chai = require("chai");
+// var domain = require("domain");
+// var d = domain.create();
+
+// d.on("error", function(err) {
+//     console.error("Failing gracefully:" + err);
+// });
+
 const expect = chai.expect;
 
 const mergeArrayByPropertyValue = require("../dist/index.js");
@@ -24,8 +31,11 @@ describe("During merge process", () => {
         planets,
         { newProperty: "planetData" }
     );
-    planets.push({});
-    characters.push({});
+    // planets.push({});
+    expect(planets.push({})).to.throw(
+        "Property does not exist in model schema."
+    );
+
     it("should prooduce a merged array", () => {
         expect(mergedChars).to.be.an("array");
     });
@@ -44,6 +54,9 @@ describe("New merge object", () => {
 });
 
 /*
+
+expect(model.get.bind(model, 'z')).to.throw('Property does not exist in model schema.');
+expect(model.get.bind(model, 'z')).to.throw(new Error('Property does not exist in model schema.'))
 
 expect({a: 1}).to.be.an('object');
 var validatorObj = require("../dist/abnacn-validator.js");

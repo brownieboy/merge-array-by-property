@@ -43,6 +43,7 @@
                 if ((typeof options === "undefined" ? "undefined" : _typeof(options)) === "object" && typeof options.newProperty === "string") {
                     newEl = Object.assign({}, sourceEl);
                     newEl[options.newProperty] = infoMatched;
+                    delete newEl[options.newProperty][toMergeArrayKey];
                 } else {
                     // Otherwise just merge
                     newEl = Object.assign({}, sourceEl, infoMatched);
