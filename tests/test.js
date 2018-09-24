@@ -14,15 +14,38 @@ const planets = [
     { id: "020", name: "Corellia", allegiance: "Neutral" }
 ];
 
-const mergedChars = mergeArrayByPropertyValue(
-    ["planetId", "id"],
-    characters,
-    planets,
-    { newProperty: "planetData" }
-);
+Object.freeze(characters, planets);
+
+let mergedChars;
+describe("During merge process", () => {
+    mergedChars = mergeArrayByPropertyValue(
+        ["planetId", "id"],
+        characters,
+        planets,
+        { newProperty: "planetData" }
+    );
+    planets.push({});
+    characters.push({});
+    it("should prooduce a merged array", () => {
+        expect(mergedChars).to.be.an("array");
+    });
+});
+
+// characters.push({});
 console.log(mergedChars);
 
+describe("New merge object", () => {
+    const arrayLength = characters.length;
+    for (let x = 0; x < arrayLength; x++) {
+        it(`array member ${x} should have new planetData object`, () => {
+            expect(mergedChars[x].planetData).to.be.an("object");
+        });
+    }
+});
+
 /*
+
+expect({a: 1}).to.be.an('object');
 var validatorObj = require("../dist/abnacn-validator.js");
 
 // I used http://www.clearwater.com.au/code to check valid and invalid ABNs  in
