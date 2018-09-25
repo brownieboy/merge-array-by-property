@@ -49,17 +49,27 @@
                 } else {
                     // Not a new property to be set on new merged array
                     if ((typeof options === "undefined" ? "undefined" : _typeof(options)) === "object" && _typeof(options.keyMapping) === "object") {
+                        var matchingKeyInMapping = void 0;
                         var _iteratorNormalCompletion = true;
                         var _didIteratorError = false;
                         var _iteratorError = undefined;
 
                         try {
-                            for (var _iterator = options.keyMapping[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                                var keyPairObj = _step.value;
+                            var _loop = function _loop() {
+                                var key = _step.value;
 
-                                if (typeof infoMatched[keyPairObj.key] !== "undefined") {
-                                    newEl[keyPairObj.newKey] = infoMatched[keyPairObj.key];
+                                matchingKeyInMapping = options.keyMapping.find(function (member) {
+                                    return member.key === key;
+                                });
+                                if (typeof matchingKeyInMapping !== "undefined") {
+                                    newEl[matchingKeyInMapping.newKey] = infoMatched[key];
+                                } else {
+                                    newEl[key] = infoMatched[key];
                                 }
+                            };
+
+                            for (var _iterator = Object.keys(infoMatched)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                _loop();
                             }
                         } catch (err) {
                             _didIteratorError = true;

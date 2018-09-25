@@ -29,9 +29,7 @@ const mergedCharsFlat = mergeArrayByPropertyValue(
     planets,
     {
         keyMapping: [
-            { key: "name", newKey: "planetName" },
-            { key: "allegiance", newKey: "allegiance" }
-        ]
+            { key: "name", newKey: "planetName" }        ]
     }
 );
 console.log("mergedCharsFlat:");

@@ -37,12 +37,16 @@ const mergeArrayByPropertyValue = (id, sourceArray, toMergeArray, options) => {
                     typeof options === "object" &&
                     typeof options.keyMapping === "object"
                 ) {
-                    for (let keyPairObj of options.keyMapping) {
-                        if (
-                            typeof infoMatched[keyPairObj.key] !== "undefined"
-                        ) {
-                            newEl[keyPairObj.newKey] =
-                                infoMatched[keyPairObj.key];
+                    let matchingKeyInMapping;
+                    for (let key of Object.keys(infoMatched)) {
+                        matchingKeyInMapping = options.keyMapping.find(
+                            member => member.key === key
+                        );
+                        if (typeof matchingKeyInMapping !== "undefined") {
+                            newEl[matchingKeyInMapping.newKey] =
+                                infoMatched[key];
+                        } else {
+                            newEl[key] = infoMatched[key];
                         }
                     }
                 } else {

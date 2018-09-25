@@ -74,13 +74,12 @@ describe("Merging characters and planets flat, with keyMapping", () => {
         {
             keyMapping: [
                 { key: "id", newKey: "planetId" },
-                { key: "name", newKey: "planetName" },
-                { key: "allegiance", newKey: "allegiance" }
+                { key: "name", newKey: "planetName" }
             ]
         }
     );
-    console.log("mergedCharsFlat:");
-    console.log(mergedCharsFlat);
+    // console.log("mergedCharsFlat:");
+    // console.log(mergedCharsFlat);
     it("should produce a merged array", () => {
         expect(mergedCharsFlat).to.be.an("array");
     });
@@ -92,95 +91,17 @@ describe("Merging characters and planets flat, with keyMapping", () => {
     it("should not be the same be array as source", () => {
         expect(mergedCharsFlat).not.to.equal(characters);
     });
-    // it("first array item should have Han's id property", () => {
-    //     expect(mergedCharsNewProperty[0].id).to.equal("hansolo");
-    // });
-    // it("first array item's platentData property should have Corellia for its planet", () => {
-    //     expect(mergedCharsNewProperty[0].planetData.name).to.equal("Corellia");
-    // });
-    // it("third array item should have C-3PO's name property", () => {
-    //     expect(mergedCharsNewProperty[2].name).to.equal("C-3PO");
-    // });
-    // it("third array item's platentData property should have Tatooine for its planet", () => {
-    //     expect(mergedCharsNewProperty[2].planetData.name).to.equal("Tatooine");
-    // });
-});
-
-/*
-
-expect(model.get.bind(model, 'z')).to.throw('Property does not exist in model schema.');
-expect(model.get.bind(model, 'z')).to.throw(new Error('Property does not exist in model schema.'))
-
-expect({a: 1}).to.be.an('object');
-var validatorObj = require("../dist/abnacn-validator.js");
-
-// I used http://www.clearwater.com.au/code to check valid and invalid ABNs  in
-// the test arrays below.  I looked up existing ABNs at http://abr.business.gov.au/
-var abns = ['83 914 571 673', '83914571673', '96 001 217 847', '21 000 006 226', '15 000 122 850', '52 097 227 177', '52097227177'];
-var acns = ['000 000 019', '000 250 000', '000250000', '000 500 005', '000 750 005'];
-var abnsAndAcns = abns.concat(acns);
-var acnsAndAbns = acns.concat(abns);
-var invalidAbns = ['', '0', '00 000 000 000', '11111111111', , '11 111 111 111', '83 914 571 672', '52 097 227 178', '21 000 006 227', '21000006227'];
-var invalidAcns = ['', '0', '00 000 000 000'];
-var invalidAbnsOrAcns = ['', '0', '00 000 000 000'];
-
-describe("ABN Validator", function() {
-    abns.forEach(function(abn) {
-        it("should return true for valid ABN " + abn, function() {
-            expect(validatorObj.isValidABN(abn)).to.be.true;
-        });
-
+    it("first array item should have Han's id property", () => {
+        expect(mergedCharsFlat[0].id).to.equal("hansolo");
     });
-
-    invalidAbns.forEach(function(abn) {
-        it("should return false for invalid ABN " + abn, function() {
-            expect(validatorObj.isValidABN(abn)).to.not.be.true;
-        });
-
+    it("first array item should have Corellia for its planet", () => {
+        expect(mergedCharsFlat[0].planetName).to.equal("Corellia");
     });
-
-});
-
-describe("ACN Validator", function() {
-    acns.forEach(function(acn) {
-        it("should return true for valid ACN " + acn, function() {
-            expect(validatorObj.isValidACN(acn)).to.be.true;
-        });
-
+    it("third array item should have C-3PO's name property", () => {
+        expect(mergedCharsFlat[2].name).to.equal("C-3PO");
     });
-
-    invalidAcns.forEach(function(acn) {
-        it("should return false for invalid ACN " + acn, function() {
-            expect(validatorObj.isValidACN(acn)).to.not.be.true;
-        });
-    });
-
-});
-
-describe("ACN/ABN combined Validator", function() {
-    abnsAndAcns.forEach(function(abnOrAcn) {
-        it("should return true for valid ABN or ACN " + abnOrAcn, function() {
-            expect(validatorObj.isValidABNorACN(abnOrAcn)).to.be.true;
-        });
-
-    });
-
-    invalidAbnsOrAcns.forEach(function(abnOrAcn) {
-        it("should return false for neither valid ABN or ACN", function() {
-            expect(validatorObj.isValidABNorACN(abnOrAcn)).to.not.be.true;
-        });
-
+    it("third array item should have neutral as allegiance", () => {
+        expect(mergedCharsFlat[2].allegiance).to.equal("Neutral");
     });
 });
 
-// Just to sure, let's switch the order and put ACN tests before ABN
-describe("ACN/ABN combined Validator", function() {
-    acnsAndAbns.forEach(function(abnOrAcn) {
-        it("should return true for neither valid ACN or ABN (ACNs go first this time) " + abnOrAcn, function() {
-            expect(validatorObj.isValidABNorACN(abnOrAcn)).to.be.true;
-        });
-
-    });
-});
-
-*/
