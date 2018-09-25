@@ -32,9 +32,9 @@ describe("During merge process", () => {
         { newProperty: "planetData" }
     );
     // planets.push({});
-    it("should not throw and error on mutate", () => {
-        expect(() => planets.push({})).to.throw(Error);
-    });
+    // it("should not throw and error on mutate", () => {
+    //     expect(() => planets.push({})).to.throw(Error);
+    // });
 
     it("should prooduce a merged array", () => {
         expect(mergedChars).to.be.an("array");
