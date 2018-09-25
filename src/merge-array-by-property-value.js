@@ -22,7 +22,7 @@ const mergeArrayByPropertyValue = (id, sourceArray, toMergeArray, options) => {
                 typeof options === "object" &&
                 typeof options.newProperty === "string"
             ) {
-                newEl[options.newProperty] = Object.assign({}, infoMatched);
+                newEl[options.newProperty] = Object.assign({}, infoMatched);  // Avoid mutation again
                 delete newEl[options.newProperty][toMergeArrayKey];
             } else {
                 // Otherwise just merge

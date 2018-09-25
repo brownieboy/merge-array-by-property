@@ -47,7 +47,7 @@ console.log(mergedChars);
 describe("New merge object", () => {
     const arrayLength = characters.length;
     for (let x = 0; x < arrayLength; x++) {
-        it(`array member ${x} should have new planetData object`, () => {
+        it(`array member ${x}, ${mergedChars[x].id}, should have new planetData object`, () => {
             expect(mergedChars[x].planetData).to.be.an("object");
         });
     }
