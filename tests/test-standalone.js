@@ -1,4 +1,6 @@
-const mergeArrayByPropertyValue = require("../dist/index.js");
+// const mergeArrayByPropertyValue = require("../dist/index.js");
+const mergeArrayByPropertyValue = require("../src/merge-array-by-property-value.js");
+
 
 const characters = [
     { id: "hansolo", name: "Han Solo", planetId: "020" },
