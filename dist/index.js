@@ -43,10 +43,42 @@
                 // Assign as new target if we supplied that option
                 if ((typeof options === "undefined" ? "undefined" : _typeof(options)) === "object" && typeof options.newProperty === "string") {
                     newEl[options.newProperty] = Object.assign({}, infoMatched); // Avoid mutation again
-                    delete newEl[options.newProperty][toMergeArrayKey];
+                    if (!(typeof options.preserveTargetKey !== "undefined" & options.preserveTargetKey)) {
+                        delete newEl[options.newProperty][toMergeArrayKey];
+                    }
                 } else {
-                    // Otherwise just merge
-                    newEl = Object.assign({}, sourceEl, infoMatched);
+                    // Not a new property to be set on new merged array
+                    if ((typeof options === "undefined" ? "undefined" : _typeof(options)) === "object" && _typeof(options.keyMapping) === "object") {
+                        var _iteratorNormalCompletion = true;
+                        var _didIteratorError = false;
+                        var _iteratorError = undefined;
+
+                        try {
+                            for (var _iterator = options.keyMapping[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                var keyPairObj = _step.value;
+
+                                if (typeof infoMatched[keyPairObj.key] !== "undefined") {
+                                    newEl[keyPairObj.newKey] = infoMatched[keyPairObj.key];
+                                }
+                            }
+                        } catch (err) {
+                            _didIteratorError = true;
+                            _iteratorError = err;
+                        } finally {
+                            try {
+                                if (!_iteratorNormalCompletion && _iterator.return) {
+                                    _iterator.return();
+                                }
+                            } finally {
+                                if (_didIteratorError) {
+                                    throw _iteratorError;
+                                }
+                            }
+                        }
+                    } else {
+                        // Otherwise just merge, and damn the torpedoes!
+                        newEl = Object.assign({}, sourceEl, infoMatched);
+                    }
                 }
             }
             return newEl;

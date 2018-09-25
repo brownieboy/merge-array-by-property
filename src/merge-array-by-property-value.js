@@ -32,8 +32,23 @@ const mergeArrayByPropertyValue = (id, sourceArray, toMergeArray, options) => {
                     delete newEl[options.newProperty][toMergeArrayKey];
                 }
             } else {
-                // Otherwise just merge
-                newEl = Object.assign({}, sourceEl, infoMatched);
+                // Not a new property to be set on new merged array
+                if (
+                    typeof options === "object" &&
+                    typeof options.keyMapping === "object"
+                ) {
+                    for (let keyPairObj of options.keyMapping) {
+                        if (
+                            typeof infoMatched[keyPairObj.key] !== "undefined"
+                        ) {
+                            newEl[keyPairObj.newKey] =
+                                infoMatched[keyPairObj.key];
+                        }
+                    }
+                } else {
+                    // Otherwise just merge, and damn the torpedoes!
+                    newEl = Object.assign({}, sourceEl, infoMatched);
+                }
             }
         }
         return newEl;
