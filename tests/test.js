@@ -1,11 +1,4 @@
 const chai = require("chai");
-// var domain = require("domain");
-// var d = domain.create();
-
-// d.on("error", function(err) {
-//     console.error("Failing gracefully:" + err);
-// });
-
 const expect = chai.expect;
 
 const mergeArrayByPropertyValue = require("../dist/index.js");
@@ -23,34 +16,59 @@ const planets = [
 
 Object.freeze(characters, planets);
 
-let mergedChars;
-describe("During merge process", () => {
-    mergedChars = mergeArrayByPropertyValue(
+let mergedCharsNewProperty, mergedCharsFlat;
+describe("Merging characters and planets with new property", () => {
+    mergedCharsNewProperty = mergeArrayByPropertyValue(
         ["planetId", "id"],
         characters,
         planets,
         { newProperty: "planetData" }
     );
-    // planets.push({});
-    // it("should not throw and error on mutate", () => {
-    //     expect(() => planets.push({})).to.throw(Error);
-    // });
+    console.log("mergedCharsNewProperty:");
+    console.log(mergedCharsNewProperty);
+    it("should produce a merged array", () => {
+        expect(mergedCharsNewProperty).to.be.an("array");
+    });
 
-    it("should prooduce a merged array", () => {
-        expect(mergedChars).to.be.an("array");
+    it("should be the same length as source", () => {
+        expect(mergedCharsNewProperty.length).to.equal(characters.length);
+    });
+
+    it("should not be the same be array as source", () => {
+        expect(mergedCharsNewProperty).not.to.equal(characters);
     });
 });
 
-// characters.push({});
-console.log(mergedChars);
-
-describe("New merge object", () => {
+describe("Merged array's objects", () => {
     const arrayLength = characters.length;
     for (let x = 0; x < arrayLength; x++) {
-        it(`array member ${x}, ${mergedChars[x].id}, should have new planetData object`, () => {
-            expect(mergedChars[x].planetData).to.be.an("object");
+        it(`array member ${x}, ${
+            mergedCharsNewProperty[x].id
+        }, should have new planetData object`, () => {
+            expect(mergedCharsNewProperty[x].planetData).to.be.an("object");
         });
     }
+});
+
+describe("Merging characters and planets flat", () => {
+    mergedCharsFlat = mergeArrayByPropertyValue(
+        ["planetId", "id"],
+        characters,
+        planets
+    );
+    console.log("mergedCharsFlat:");
+    console.log(mergedCharsFlat);
+    it("should produce a merged array", () => {
+        expect(mergedCharsFlat).to.be.an("array");
+    });
+
+    it("should be the same length as source", () => {
+        expect(mergedCharsFlat.length).to.equal(characters.length);
+    });
+
+    it("should not be the same be array as source", () => {
+        expect(mergedCharsFlat).not.to.equal(characters);
+    });
 });
 
 /*

@@ -42,7 +42,7 @@
             if (typeof infoMatched !== "undefined") {
                 // Assign as new target if we supplied that option
                 if ((typeof options === "undefined" ? "undefined" : _typeof(options)) === "object" && typeof options.newProperty === "string") {
-                    newEl[options.newProperty] = Object.assign({}, infoMatched);
+                    newEl[options.newProperty] = Object.assign({}, infoMatched); // Avoid mutation again
                     delete newEl[options.newProperty][toMergeArrayKey];
                 } else {
                     // Otherwise just merge
