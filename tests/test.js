@@ -29,9 +29,10 @@ describe("Merging characters and planets with new property", () => {
         planets,
         { newProperty: "planetData" }
     );
-    // console.log("mergedCharsNewProperty:");
-    // console.log(mergedCharsNewProperty);
+
     it("should produce a merged array", () => {
+        console.log("mergedCharsNewProperty:");
+        console.log(mergedCharsNewProperty);
         expect(mergedCharsNewProperty).to.be.an("array");
     });
 
@@ -78,9 +79,10 @@ describe("Merging characters and planets flat, with keyMapping", () => {
             ]
         }
     );
-    // console.log("mergedCharsFlat:");
-    // console.log(mergedCharsFlat);
+
     it("should produce a merged array", () => {
+        console.log("mergedCharsFlat:");
+        console.log(mergedCharsFlat);
         expect(mergedCharsFlat).to.be.an("array");
     });
 
@@ -104,4 +106,3 @@ describe("Merging characters and planets flat, with keyMapping", () => {
         expect(mergedCharsFlat[2].allegiance).to.equal("Neutral");
     });
 });
-
