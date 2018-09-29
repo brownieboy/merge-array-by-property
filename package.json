@@ -1,16 +1,24 @@
 {
   "name": "merge-array-by-property",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Merges/joins two arrays based on the value of the arrays' properties",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brownieboy/merge-array-by-property"
+  },
+  "bugs": "https://github.com/brownieboy/merge-array-by-property/issues",
   "scripts": {
     "build": "./node_modules/.bin/babel ./src/merge-array-by-property-value.js -o dist/index.js",
     "test": "./node_modules/.bin/mocha ./tests",
     "buildAndTest": "npm run build && npm run test",
     "prepublish": "npm run build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["array", "merge"],
+    "author": {
+        "name": "Michael Brown",
+        "email": "brownieboy@gmail.com"
+    },
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
