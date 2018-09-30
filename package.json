@@ -1,6 +1,6 @@
 {
   "name": "merge-array-by-property",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Merges/joins two arrays based on the value of the arrays' properties",
   "main": "dist/index.js",
   "repository": {
@@ -15,10 +15,10 @@
     "prepublish": "npm run build"
   },
   "keywords": ["array", "merge"],
-    "author": {
-        "name": "Michael Brown",
-        "email": "brownieboy@gmail.com"
-    },
+  "author": {
+    "name": "Michael Brown",
+    "email": "brownieboy@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",

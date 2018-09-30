@@ -59,7 +59,7 @@ will return this new array:
     planetData: { name: 'Tatooine', allegiance: 'Neutral' } } ]
 ```
 
-The new array includes every member of the first array, with the corresponding values on the second array added to the merged array as a new property called planetData.  This is determined by the *newProperty* option passed into the call.
+The new array includes every member of the first array, with the corresponding values on the second array, based on the match of the `id` and `planetId` properties, added to the merged array as a new property called planetData.  The name of this property is determined by the **newProperty** option passed into the call.
 
 ### Example 2: Flat Merge with Property Mapping
 This call:
@@ -137,10 +137,10 @@ The syntax is as follows, assuming that you've imported the function into your p
 Where:
 * *array1* and *array2* are the two arrays to be merged, obviously.  The function will loop through all members of array1, and look for matching members in array2, based on the *ids* passed in.
 * *ids* can be a single array string, or an array of up to two members.  These are the property members that the function will use to try and join the two arrays together.  If you pass in a single value, e.g. "id", then it will join the two arrays matched on that _same_ property in each array.  More likely though, the two properties will have different names, so you should pass them in as a two-member array, e.g. ["planetId", "id"], which matched the *planetId* property in the first array to the *id* property in the second.
-* *options* is an optional object, which can the following values:
-    * *newProperty* is the name of a property which will take the _entire_ value from the matching value in the second array.  Without this option supplied, the function will attempt to merge the two arrays' properties at the top level.
-    * *keyMapping* is an array of property key names, used to prevent properties in the first array being directly overwritten the by those in the second array in the final, merged array.  Each member of the *keyMapping* array is an object with a *key* and *newKey* property, with the latter becoming the former's name in the merged array.  E.g. passing in an *keyMapping* value of `{ key: "name", newKey: "planetName" }` will set the second array's *name* property to become the *planetName* property in the merged array.
-    * *preserveTargetKey* is boolean, default is `false`.  By default, the second array's matching property will _not_ be included in the merged array.  This is because you already _have_ that property value in the first array (otherwise you couldn't match in the first place!), so you probably don't need the same property value under two different names on your merged array.  But just in case you do, set the *preserveTargetKey* to `true`.
+* **options** is an optional object, which can the following values:
+    * **newProperty** a string, is the name of a property which will take the _entire_ value from the matching value in the second array.  Without this option supplied, the function will attempt to merge the two arrays' properties at the top level.
+    * **keyMapping** is an array of property key names, used to prevent properties in the first array being directly overwritten the by those in the second array in the final, merged array.  Each member of the *keyMapping* array is an object with a **key** and **newKey** property, with the latter becoming the former's name in the merged array.  E.g. passing in an **keyMapping** value of `{ key: "name", newKey: "planetName" }` will set the second array's *name* property to become the **planetName** property in the merged array.
+    * **preserveTargetKey** is boolean, default is `false`.  By default, the second array's matching property will _not_ be included in the merged array.  This is because you already _have_ that property value in the first array (otherwise you couldn't match in the first place!), so you probably don't need the same property value under two different names on your merged array.  But just in case you do, set **preserveTargetKey** to `true`.
 
 
 
@@ -160,5 +160,12 @@ to build it to the /dist folder.  Babel will transform from ES6 to CommonJS form
 To run the test suite.
 
     npm test
+
+
+## Updates
+* v1.0.1 - Updated readme formatting. No code changes to the library itself
+* v.1.0.0 - Initial release.
+
+
 
 
